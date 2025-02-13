@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model LoveCalculatorModel;
+
+<!--header and Nav here ()-->
+<h1>Love Calculator</h1>
+<p>A project this Valentines Day, just for fun</p>
+<form asp-controller="Home" asp-action="Index" id="loveCalculator" method="post">
+    <!-- Input and Submit elements -->
+    <label asp-for="YourName">Enter Your Name</label>
+    <input asp-for="YourName" type="text" name="YourName" id="yourName" required>
+    <label asp-for="PartnersName">Enter Your Partner's Name</label>
+    <input asp-for="PartnersName" type="text" name="partnersName" id="partnersName" required>
+
+    <input type="submit" value="Calculate" asp-action="Index">
+</form>
+
+<div id="resultContainer">
+    <span id="result">@Html.Raw(Model.Result)</span> <!-- Result the score percent ex:60% then newline the love quotes-->
+    <button type="button" class="calculateAgain" id="calculateAgain" style="display: none;"><i class="bi bi-arrow-clockwise"> Calculate Again</i></button>
+</div>
+
+

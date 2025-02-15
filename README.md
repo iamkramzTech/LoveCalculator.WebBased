@@ -37,7 +37,7 @@ Install dependencies:
 dotnet restore  
 Run the application:
 dotnet run  
-Open http://localhost:<your_port_number> in your browser.
+Open http://localhost:7087 in your browser.
 
 Folder Structure
 ```

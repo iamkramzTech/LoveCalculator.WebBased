@@ -1,8 +1,8 @@
-name: CI/CD to MonsterASP.NET
+name: CI/CD to MonsterASP.NET via FTP
 on:
   push:
     branches:
-      - master  # Adjust if needed
+      - master  # Change if needed
 
 jobs:
   build_and_deploy:
@@ -28,11 +28,17 @@ jobs:
 
       - name: Publish
         run: dotnet publish --configuration Release --output ./publish --runtime win-x64 --self-contained false 
-        
-      - name: Deploy to MonsterASP.NET via WebDeploy
-        uses: rasmusbuchholdt/simply-web-deploy@2.1.0
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
         with:
-          website-name: ${{ secrets.WEBSITE_NAME }}
-          server-computer-name: ${{ secrets.SERVER_COMPUTER_NAME }}  # WebDeploy URL
-          server-username: ${{ secrets.SERVER_USERNAME }}
-          server-password: ${{ secrets.SERVER_PASSWORD }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./publish/
+          server-dir: /wwwroot/  # Adjust this if MonsterASP.NET uses a different folder
+          exclude: |
+            **/.git*
+            **/node_modules/*
+            **/obj/*
+            **/bin/*

@@ -66,7 +66,7 @@ Folder Structure
 │── Program.cs  
 ```
 ## Website Deployment
- - Love Calculator is deployed at: [https://github.com/iamkramzTech](https://github.com/iamkramzTech)
+ - Love Calculator is deployed at: [http://lovecalculator.runasp.net](http://lovecalculator.runasp.net)
 
 ## Technology used
 - Front-end : HTML, CSS, JavaScript
@@ -74,3 +74,8 @@ Folder Structure
 - Hosting : MonsterASP.NET free plan
 
 ## Screenshots
+# Index Page
+![alt text](https://github.com/iamkramzTech/LoveCalculator.WebBased/blob/master/Screenshot-1.png?raw=true)
+
+# Result
+![alt text](https://github.com/iamkramzTech/LoveCalculator.WebBased/blob/master/Screenshot-2.png?raw=true)

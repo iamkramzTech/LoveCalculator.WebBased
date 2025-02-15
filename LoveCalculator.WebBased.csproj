@@ -8,8 +8,15 @@
 
   <ItemGroup>
     <Reference Include="LoveCalculator.BLL">
-      <HintPath>..\LoveCalculator101\LoveCalculator.BLL\bin\Release\net8.0\Dotfuscated\LoveCalculator.BLL.dll</HintPath>
+      <HintPath>lib\LoveCalculator.BLL.dll</HintPath>
     </Reference>
   </ItemGroup>
 
+	<ItemGroup>
+		<Content Include="lib/LoveCalculator.BLL.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+	
 </Project>

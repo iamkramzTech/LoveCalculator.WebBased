@@ -2,7 +2,7 @@ name: CI/CD to MonsterASP.NET
 on:
   push:
     branches:
-      - master  # Adjust if you use a different branch for deployment
+      - master  # Adjust if needed
 
 jobs:
   build_and_deploy:
@@ -30,8 +30,9 @@ jobs:
         run: dotnet publish --configuration Release --output ./publish --runtime win-x64 --self-contained false 
         
       - name: Deploy to MonsterASP.NET via WebDeploy
-        uses: azure/webapps-deploy@v3
+        uses: rasmusbuchholdt/simply-web-deploy@2.1.0
         with:
-          app-name: ${{ secrets.WEBSITE_NAME }}  # Set in GitHub Secrets
-          publish-profile: ${{ secrets.PUBLISH_SETTINGS }}  # Set in GitHub Secrets as a base64 string
-          package: ./publish
+          website-name: ${{ secrets.WEBSITE_NAME }}
+          server-computer-name: ${{ secrets.SERVER_COMPUTER_NAME }}  # WebDeploy URL
+          server-username: ${{ secrets.SERVER_USERNAME }}
+          server-password: ${{ secrets.SERVER_PASSWORD }}

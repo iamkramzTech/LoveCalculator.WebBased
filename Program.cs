@@ -9,8 +9,12 @@ namespace LoveCalculator.WebBased
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews()
             //builder.Services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");  // This line allows you to configure or bypass token validation.
+
+            // Disable antiforgery globally
+           // not recommended for business production used
+            .AddMvcOptions(option => option.Filters.Clear());
 
             var app = builder.Build();
 
@@ -20,7 +24,7 @@ namespace LoveCalculator.WebBased
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
-               app.UseHttpsRedirection();
+              // app.UseHttpsRedirection();
             }
 
             app.UseStaticFiles();
@@ -32,8 +36,6 @@ namespace LoveCalculator.WebBased
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}"
                 );
-
-            //app.MapGet("/", () => "Hello World!");
 
             app.Run();
         }
